@@ -1,8 +1,10 @@
 /*全体のスタイル（CSSリセット用）*/
 *{
     /* padding,borderが要素の中に入る */
+    /* paddingやborderに合わせてサイズが変わってくれる */
     box-sizing:border-box;
 }
+
 ul{
     /* リストの・を消す */
     list-style: none;
@@ -16,7 +18,7 @@ h1,h2,h3,h4,h5,h6,p,span,button{
 }
 
 a{
-    color:inherit; 
+    color:inherit;
     /* 文字の下の線を消す */
     text-decoration:none;   
 }
@@ -25,4 +27,73 @@ body{
     color:#555;
     margin:0;
     line-height:1.6;
+}
+
+header{
+    width:100%;
+    display: flex;
+    justify-content:space-between;
+    padding: 0 20px;
+    color: #fff;
+    background-color: black;
+}
+
+.header-logo{
+    padding: 20px 0;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.header-nav ul{
+    display:flex;
+    padding: 22px 0;
+}
+
+.header-nav li{
+    margin-left: 55px;
+    font-size: 15px;
+}
+
+footer{
+    width:100%;
+    background-color: #191919;
+    height: 50px;
+}
+
+.company-info{
+    text-align: center;
+    line-height: 50px;
+    font-weight: bold;
+    color: #fff;
+    font-size: 12px;
+}
+
+#first-view{
+    /* 背景画像のサイズが合わない */
+    height: 770px;
+    background-image: url(../img/bg1.png);
+    background-size: cover;
+}
+
+.first-view-wrap{
+    padding: 285px 0 255px;
+    margin:0 auto;
+    width: 250px;
+    text-align: center;
+}
+
+.first-view-title{
+    margin-bottom: 150px;
+    font-weight: bold;
+    font-size: 27px;
+    color:#fff
+}
+
+.first-view-title::after{
+    /* ここわからない */
+    display:block;
+    content:"";
+    width:100px;
+    margin:20px auto 0;
+    border-top:1px solid #fff;
 }
