@@ -115,9 +115,13 @@ header{
 
 /* about-page */
 
+#about{
+    background-color: #f8f8f8;
+}
+
 .about-title{
     display: flex;
-    width: 250px;
+    width: 200px;
     align-items: center;
     font-size: 18px;
     font-style: italic;
@@ -142,7 +146,47 @@ header{
     font-weight: bold;
 }
 
-/* footer */
+.about-wrap{
+    margin-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.about-item {
+    background-color: #fff;
+    width: 300px;
+    height: 312px;
+    padding: 35px 50px 50px;
+    text-align: center;
+    margin-right: 100px;
+}
+
+.about-item:nth-child(3), .about-item:nth-child(6){
+    margin-right: 0;
+}
+
+.about-item:nth-child(n+4):nth-child(-n+6){
+    margin-top: 47px;
+}
+
+.about-item_title{
+    font-size: 22px;
+}
+
+/* paddingだとなぜダメになるのか？ youtube28:18 */
+.about-item_img{
+    margin: 20px auto 25px;
+    width: 122px;
+    height: 122px;
+}
+
+.about-item_img img{
+    width: 100%;
+}
+
+.about-item_desc{
+    font-size: 13px;
+}
 
 footer{
     width:100%;
