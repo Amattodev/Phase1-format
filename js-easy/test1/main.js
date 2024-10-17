@@ -1,8 +1,9 @@
 
-const text = document.getElementById("text");
+//可読性のために変数名
+const textViewer = document.getElementById("textViewer");
 
 //分岐
-const button = () => {
+const viewText = () => {
     const result = Math.random() * 10;
     if (result < 5) {
         text.innerHTML = "5より小さい"
