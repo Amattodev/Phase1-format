@@ -5,7 +5,7 @@ const iniDel = document.getElementById("iniDel");
 const endDel = document.getElementById("endDel");
 
 const maxNum = 400;
-let textarea;
+// let textarea;
 
 //文字数カウンター
 sampleForm.addEventListener("keyup", () => {
