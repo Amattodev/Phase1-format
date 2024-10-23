@@ -1,8 +1,11 @@
 const pushBtn = document.getElementById("pushBtn");
 const viewImg = document.getElementById("viewImg");
 const skipBtn = document.getElementById("skipBtn");
+const loopBtn = document.getElementById("loopBtn");
+const stopBtn = document.getElementById("stopBtn");
 
 let imgNum = 0;
+let loop;
 
 //画像とボタンをセットで保存
 const data = [
@@ -16,8 +19,7 @@ const data = [
 pushBtn.textContent = data[imgNum].text;
 viewImg.setAttribute("src", data[imgNum].img);
 
-//ボタンを押すと画像が表示される
-pushBtn.addEventListener("click", () => {
+const changeImg = () => {
   if (imgNum === 3) {
     imgNum = 0;
   } else {
@@ -25,6 +27,11 @@ pushBtn.addEventListener("click", () => {
   }
   pushBtn.textContent = data[imgNum].text;
   viewImg.setAttribute("src", data[imgNum].img);
+};
+
+//ボタンを押すと画像が表示される
+pushBtn.addEventListener("click", () => {
+  changeImg();
 });
 
 //formの選択肢ごとに飛べる
@@ -33,4 +40,14 @@ skipBtn.addEventListener("click", function () {
   imgNum = parseInt(imgNum);
   viewImg.setAttribute("src", data[imgNum].img);
   pushBtn.textContent = data[imgNum].text;
+});
+
+//10秒ごとに画像がループする
+loopBtn.addEventListener("click", () => {
+  clearInterval(loop);
+  loop = setInterval(changeImg, 10000);
+});
+
+stopBtn.addEventListener("click", () => {
+  clearInterval(loop);
 });
