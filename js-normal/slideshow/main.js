@@ -6,6 +6,7 @@ const stopBtn = document.getElementById("stopBtn");
 
 let imgNum = 0;
 let loop;
+let isLooping = false;
 
 //画像とボタンをセットで保存
 const data = [
@@ -44,10 +45,15 @@ skipBtn.addEventListener("click", function () {
 
 //10秒ごとに画像がループする
 loopBtn.addEventListener("click", () => {
-  clearInterval(loop);
-  loop = setInterval(changeImg, 10000);
-});
-
-stopBtn.addEventListener("click", () => {
-  clearInterval(loop);
+  isLooping = !isLooping;
+  if (isLooping) {
+    // isLooping = true;
+    loopBtn.value = "ストップ";
+    clearInterval(loop);
+    loop = setInterval(changeImg, 5000);
+  } else {
+    // isLooping = false;
+    clearInterval(loop);
+    loopBtn.value = "ループ";
+  }
 });
