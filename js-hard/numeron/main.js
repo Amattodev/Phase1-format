@@ -37,6 +37,12 @@ numCheck.addEventListener("click", () => {
     alert("3桁の数字を入力してください");
     return;
   }
+  const duplicateNum = new Set(input.value).size !== input.value.length;
+  if (duplicateNum) {
+    alert("同じ数字を入力しないでください");
+    return;
+  }
+  //ヌメロン処理
   let eat = 0;
   let bite = 0;
   numeronData.inputNum = input.value.split("").map(Number);
