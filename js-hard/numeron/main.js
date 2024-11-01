@@ -2,7 +2,7 @@ const input = document.getElementById("inputNum");
 const numCheck = document.getElementById("numCheck");
 const remainTurn = document.getElementById("remainTurn");
 
-let turn = 3;
+let turn = 10;
 remainTurn.textContent = `あと残り${turn}回です`;
 
 const numeronData = {
