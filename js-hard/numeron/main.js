@@ -26,7 +26,7 @@ const random = () => {
 
 random();
 
-//判定
+//ヌメロン処理
 numCheck.addEventListener("click", () => {
   //エラー
   if (input.value === "") {
@@ -42,7 +42,7 @@ numCheck.addEventListener("click", () => {
     alert("同じ数字を入力しないでください");
     return;
   }
-  //ヌメロン処理
+  //数字のチェック
   let eat = 0;
   let bite = 0;
   numeronData.inputNum = input.value.split("").map(Number);
@@ -53,9 +53,10 @@ numCheck.addEventListener("click", () => {
       bite += 1;
     }
   }
-  turn -= 1;
   alert(`${eat}:EAT、${bite}BITE`);
+  turn -= 1;
   remainTurn.textContent = `あと残り${turn}回です`;
+  //判定処理
   if (eat === 3) {
     alert("正解です！");
     random();
