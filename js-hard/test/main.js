@@ -1,10 +1,14 @@
 const array1 = [1, 2, 3, 4, 5];
 
 const toggleArrayElement = (array, element) => {
-  const index = array.indexOf(element);
+  const newArray = [...array];
+  const index = newArray.indexOf(element);
   if (index === -1) {
-    array.push(element);
+    newArray.push(element);
   } else {
-    array.splice(index, 1);
+    newArray.splice(index, 1);
   }
+  return newArray;
 };
+console.log(toggleArrayElement(array1, 2));
+console.log(array1);
