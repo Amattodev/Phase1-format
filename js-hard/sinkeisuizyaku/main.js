@@ -1,10 +1,11 @@
 const gameData = {
-  cards: [1, 1, 2, 2, 3, 3, 4, 4],
+  cards: [],
   flipCardsArray: [],
   cardMatchCount: 0,
 };
 
 const shuffle = () => {
+  gameData.cards = [1, 1, 2, 2, 3, 3, 4, 4];
   for (i = gameData.cards.length; 0 < i; i--) {
     let randomNum = Math.floor(Math.random() * i); //0~7
     [gameData.cards[randomNum], gameData.cards[i - 1]] = [
@@ -22,12 +23,13 @@ const flipCards = () => {
     const card = document.createElement("div");
     card.classList.add("card", "back");
     panel.appendChild(card);
-    card.textContent = element;
+    card.textContent = "";
     //カードをフリップする
     card.addEventListener("click", () => {
       if (gameData.flipCardsArray.length < 2) {
         card.classList.remove("back");
         card.classList.add("flipped");
+        card.textContent = element;
         gameData.flipCardsArray.push(card);
         setTimeout(checkCards, 1500);
       }
