@@ -23,14 +23,19 @@ const flipCards = () => {
     const card = document.createElement("div");
     card.classList.add("card", "back");
     panel.appendChild(card);
-    card.textContent = "";
+    card.textContent = ""; //最初は見えないようにする
     //カードをフリップする
     card.addEventListener("click", () => {
       if (gameData.flipCardsArray.length < 2) {
+        if (gameData.flipCardsArray.includes(card)) {
+          //同じカードが一致判定にならないように
+          return;
+        }
         card.classList.remove("back");
         card.classList.add("flipped");
-        card.textContent = element;
+        card.textContent = element; //フリップされた時に見える
         gameData.flipCardsArray.push(card);
+        console.log(gameData.flipCardsArray);
         setTimeout(checkCards, 1500);
       }
     });
