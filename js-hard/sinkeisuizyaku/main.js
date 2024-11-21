@@ -1,42 +1,54 @@
 const gameData = {
   cards: [],
-  flipCardsArray: [],
+  flippedCards: [],
   cardMatchCount: 0,
+};
+
+//関数名の整理（初期化の関数にまとめる）
+const setUpGame = () => {
+  shuffle();
+  flipCards();
 };
 
 const shuffle = () => {
   gameData.cards = [1, 1, 2, 2, 3, 3, 4, 4];
-  for (i = gameData.cards.length; 0 < i; i--) {
-    let randomNum = Math.floor(Math.random() * i); //0~7
+  for (let i = gameData.cards.length; 0 < i; i--) {
+    let randomNum = Math.floor(Math.random() * i);
     [gameData.cards[randomNum], gameData.cards[i - 1]] = [
       gameData.cards[i - 1],
       gameData.cards[randomNum],
     ];
   }
-  flipCards();
 };
 
+//cardの変数名を変更
 const flipCards = () => {
-  gameData.cards.forEach((element) => {
+  gameData.cards.forEach((card) => {
     //カードに数字を表示
     const panel = document.getElementById("panel");
-    const card = document.createElement("div");
-    card.classList.add("card", "back");
-    panel.appendChild(card);
-    card.textContent = ""; //最初は見えないようにする
+    const cardElement = document.createElement("div");
+    cardElement.classList.add("card", "back");
+    panel.appendChild(cardElement);
+    cardElement.textContent = "";
     //カードをフリップする
-    card.addEventListener("click", () => {
-      if (gameData.flipCardsArray.length < 2) {
-        if (gameData.flipCardsArray.includes(card)) {
-          //同じカードが一致判定にならないように
+    cardElement.addEventListener("click", () => {
+      if (gameData.flippedCards.length < 2) {
+        //正解したカードをクリックした際のエラー
+        if (
+          gameData.flippedCards.includes(cardElement) ||
+          cardElement.classList.contains("finish")
+        ) {
           return;
         }
-        card.classList.remove("back");
-        card.classList.add("flipped");
-        card.textContent = element; //フリップされた時に見える
-        gameData.flipCardsArray.push(card);
-        console.log(gameData.flipCardsArray);
-        setTimeout(checkCards, 1500);
+        cardElement.classList.remove("back");
+        cardElement.classList.add("flipped");
+        cardElement.textContent = card;
+        gameData.flippedCards.push(cardElement);
+        //フリップしたカードが2枚の時
+        if (gameData.flippedCards.length === 2) {
+          setTimeout(checkCards, 1500);
+          console.log(gameData.flippedCards);
+        }
       }
     });
   });
@@ -44,24 +56,23 @@ const flipCards = () => {
 
 const checkCards = () => {
   if (
-    gameData.flipCardsArray[0].textContent ===
-    gameData.flipCardsArray[1].textContent
+    gameData.flippedCards[0].textContent ===
+    gameData.flippedCards[1].textContent
   ) {
-    gameData.flipCardsArray[0].classList.add("finish");
-    gameData.flipCardsArray[1].classList.add("finish");
+    gameData.flippedCards[0].classList.add("finish");
+    gameData.flippedCards[1].classList.add("finish");
     gameData.cardMatchCount += 2;
-    gameData.flipCardsArray = [];
+    gameData.flippedCards = [];
     if (gameData.cardMatchCount === gameData.cards.length) {
-      console.log("aaa");
       alert("終了");
     }
   } else {
-    gameData.flipCardsArray[0].classList.remove("flipped");
-    gameData.flipCardsArray[1].classList.remove("flipped");
-    gameData.flipCardsArray[0].classList.add("back");
-    gameData.flipCardsArray[1].classList.add("back");
-    gameData.flipCardsArray = [];
+    gameData.flippedCards[0].classList.remove("flipped");
+    gameData.flippedCards[1].classList.remove("flipped");
+    gameData.flippedCards[0].classList.add("back");
+    gameData.flippedCards[1].classList.add("back");
+    gameData.flippedCards = [];
   }
 };
 
-shuffle();
+setUpGame();
