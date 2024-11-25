@@ -18,5 +18,4 @@ https://qiita.com/pure-adachi/items/77fdf665ff6e5ea22128
 
 # 修正点
 
-① 検証ツールで数字表示されてしまっている
-② 同じカードをクリックすると、数字が当たるようになる
+MatchCount するのではなく、MathedCards で管理するか
